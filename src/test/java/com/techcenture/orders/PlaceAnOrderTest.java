@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 
 import com.techcenture.driverUtils.Driver;
 import com.techcenture.pages.HomePage;
+import com.techcenture.pages.OrderPage;
 import com.techcenture.pages.ProductPage;
 
 public class PlaceAnOrderTest {
@@ -16,7 +17,7 @@ public class PlaceAnOrderTest {
 		
 		HomePage homePage = new HomePage(driver);
 		ProductPage productPage = new ProductPage(driver);
- 
+        OrderPage orderPage=new OrderPage(driver);
 		
 		homePage.goToHomePage();
 		homePage.selectBestSellersElement();
@@ -25,8 +26,21 @@ public class PlaceAnOrderTest {
 		
 		productPage.verifyProductInfo();
 		productPage.verifySocialMediaButtons();
+	    productPage.productSelection(2, "White", "M");
+	    
+		
+	   	productPage.verifyAndclickAddToCartBtn();
+		productPage.verifyPopUpWindow();
+		productPage.verifyProductAdded();
+		productPage.verifyPriceAfterChoosingQuantity();
+		productPage.verifyPceAfterShippingCost();
 	
-		productPage.productSelection(2, "White", "M");
+		productPage.clickProceedToCheckOutBtn();
+		
+//		orderPage.verifyCartSummaryText();
+		orderPage.verifySummaryTab();
+		orderPage.verifyDeleteOption();
+		orderPage.proceedToCheckoutBtnClick();
 		
 		Thread.sleep(5000);
 		
