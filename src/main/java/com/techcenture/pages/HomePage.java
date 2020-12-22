@@ -25,23 +25,17 @@ public class HomePage {
 	@FindBy(xpath = "//a[text()='Best Sellers']")
 	private WebElement bestSellersLinkElement;
 	
-	
-	
-	
 	public HomePage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
-	
-	
-	
+
 	
 	public void goToHomePage() {
 		
 		driver.get("http://automationpractice.com/index.php");
 	}
-	
-	
+
 	public void selectBestSellersElement() {
 		bestSellersLinkElement.click();
 		
